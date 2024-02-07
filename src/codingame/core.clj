@@ -15,7 +15,7 @@
   [n]
   (->> (line-seq (java.io.BufferedReader. *in*))
        (take n)
-       (map (fn [i] (Integer/parseInt i)))))
+       (map #(Integer/parseInt %))))
 
 (defn max-index
   "与えられた `coll` のうち、もっとも大きな値のインデックスを返す。"
@@ -31,5 +31,7 @@
          max-index
          output)))
 
-(defn -main [& args]
-  (the-decent))
+(comment
+  (defn -main [& args]
+    (the-decent)))
+
