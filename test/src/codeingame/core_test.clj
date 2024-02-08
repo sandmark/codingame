@@ -23,3 +23,21 @@
                 (sut/compare-pos [0 2] [1 1])))
     (is (match? "NW"
                 (sut/thor-direction [1 1] [0 0])))))
+
+(deftest temperatures-test
+  (testing "Temperatures"
+    (is (match? [42 5 12 21 -5 24]
+                (with-in-str "6\n42 5 12 21 -5 24"
+                  (sut/temperatures-input))))
+    (is (match? 1
+                (sut/find-closest-zero [-1 1 -2 2])))
+    (is (match? -1
+                (sut/find-closest-zero [3 2 1 -1])))
+    (is (match? 1
+                (sut/find-closest-zero [3 2 1])))
+    (is (match? 5
+                (sut/find-closest-zero [42 5 12 21 -5 24])))
+    #_(is (match? "-1"
+                  (with-out-str
+                    (with-in-str "4\n-1"
+                      (sut/temperatures)))))))

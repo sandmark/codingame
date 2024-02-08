@@ -79,6 +79,36 @@
   (get thor-angle (compare-pos light thor)))
 
 (defn thor-ep1 []
-  (let [[light thor] (thor-get-input)]
+  (let [[light initial-thor] (thor-get-input)
+        thor                 (volatile! initial-thor)]
     (while true
-      (output (thor-direction thor light)))))
+      (let [move (compare-pos light @thor)]
+        (output (get thor-angle move))
+        (vswap! thor #(mapv + % move))))))
+
+;;;
+;;; Temperatures
+;;; https://www.codingame.com/ide/puzzle/temperatures
+;;;
+;;; stdin:
+;;;   N
+;;;   1 -5 2 -3 4
+;;;
+;;; Investigate a number which is closest to zero.
+(defn temperatures-input []
+  (let [s (last (line-seq (java.io.BufferedReader. *in*)))]
+    (map #(Integer/parseInt %)
+         (str/split s #"\s"))))
+
+(defn find-closest-zero [ns]
+  (let [ns+abs            (->> ns
+                               (map #(vector (abs %) %))
+                               (sort-by first))
+        closest-abs       (ffirst ns+abs)
+        [[_ neg] [_ pos]] (->> ns+abs
+                               (take-while (fn [[abs]] (= abs closest-abs)))
+                               distinct)]
+    (or pos neg)))
+
+(defn temperatures []
+  (output (find-closest-zero (temperatures-input))))
