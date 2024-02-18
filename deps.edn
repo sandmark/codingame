@@ -3,4 +3,5 @@
  :aliases
  {:dev {:extra-paths ["dev/src" "test/src"]
         :extra-deps  {nubank/matcher-combinators  {:mvn/version "3.8.8"}
+                      com.github.liquidz/testdoc  {:mvn/version "1.5.109"}
                       org.clojure/tools.namespace {:mvn/version "1.4.5"}}}}}
