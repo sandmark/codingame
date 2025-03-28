@@ -1,9 +1,8 @@
 {:paths ["src"]
- :deps  {org.clojure/clojure {:mvn/version "1.12.0"}}
+ :deps  {org.clojure/clojure {:mvn/version "1.11.1"}}
  :aliases
  {:dev {:extra-paths ["dev/src" "test/src" "test/resources" "spec/src"]
-        :extra-deps  {
-                      tupelo/tupelo               {:mvn/version "24.12.25"}
+        :extra-deps  {tupelo/tupelo               {:mvn/version "24.12.25"}
                       nubank/matcher-combinators  {:mvn/version "3.9.1"}
                       nubank/mockfn               {:mvn/version "0.7.0"}
                       com.github.liquidz/testdoc  {:mvn/version "1.5.109"}
