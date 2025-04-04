@@ -19,14 +19,10 @@
                     (sut/parse-grid ["~~#" "~~#" "~~#"])))
         (is (match? {:size 3, :grid [[\~ \~ \#] [\~ \~ \#] [\~ \~ \#]]}
                     (with-in-str input (sut/read-input))))
-
-        (is (match? {:islands {0 {:coast 3}}}
-                    (sut/bfs [0 2] data)))
         (is (match? {:islands {0 {:coast 3}}}
                     (sut/solve data)))))
 
     (testing "Multiple Islands"
       (let [input "6\n##~~#~\n##~~~~\n~~~~#~\n~~~##~\n~####~\n~~~~~~"]
         (is (match? {:islands {0 {:coast 4}, 1 {:coast 3}, 2 {:coast 12}}}
-                    (sut/solve (with-in-str input (sut/read-input)))))
-        ))))
+                    (sut/solve (with-in-str input (sut/read-input)))))))))
