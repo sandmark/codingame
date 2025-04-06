@@ -41,8 +41,6 @@
            (iterate search)
            (drop-while (comp not terminated?))
            ffirst
-           (filter (comp (partial = bacon) first))
-           (sort-by (comp count second))
            first))))
 
 (defn solve [{:keys [actor graph]}]
